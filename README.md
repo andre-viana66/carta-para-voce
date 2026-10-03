@@ -89,7 +89,5 @@ function fugir() {
 
 Feito com carinho por **[André](https://github.com/andre-viana66)**.
 
-## 📄 Licença
 
-Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
 
