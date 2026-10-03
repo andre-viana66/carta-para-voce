@@ -1,0 +1,86 @@
+.fundo{
+    background-image: url(imagens/fundo.jpg)  ;
+}
+  
+
+.carta{
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+    margin-top: 100px;
+}
+
+
+
+.inicial_titulo{
+    text-align: center;
+    font-family:  "Pixelify Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    color: #593B59;
+    font-weight: bold;
+    text-shadow: 2px 2px 0px #F6A6C8;
+
+}
+
+.gatinho{
+    position: absolute;   
+    z-index: 2;
+    top: 250px;
+    width: 200px;
+    margin-left: 660px;
+}
+
+.botao_sim{
+    position: absolute;   
+    z-index: 2;
+    top: 500px;
+    margin-left: 600px;
+    transition: filter 0.2s ease;
+
+}
+
+.botao_sim:hover{
+    opacity: 0.9;
+    filter: brightness(1.15);
+}
+
+.botao_nao{
+    position: fixed;   
+    z-index: 2;
+    top: 500px;
+    left: 800px;
+    transition: left 0.4s ease, top 0.4s ease;
+    margin: 0;    
+}
+
+.botao_nao:hover{
+    opacity: 0.9;
+    filter: brightness(1.15)
+}
+
+.secundario_titulo{
+    position: absolute;;
+    font-family:  "Pixelify Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400px;
+    font-style: normal;
+    top: 58%;
+    color: #593B59;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bold;
+    text-shadow: 2px 2px 0px #F6A6C8;
+
+}
+
+
+.gatinho_feliz{
+    position: absolute;   
+    z-index: 2;
+    top: 250px;
+    width: 200px;
+    margin-left: 660px;
+}
+
