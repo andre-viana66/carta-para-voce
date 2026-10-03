@@ -78,12 +78,6 @@ function fugir() {
 }
 ```
 
-## 📌 Ideias para o futuro
-
-- [ ] O botão "Sim" crescer a cada tentativa de clicar no "Não"
-- [ ] Mensagens diferentes a cada vez que o "Não" foge
-- [ ] Música de fundo (com botão para ligar/desligar)
-- [ ] Chuva de corações ao clicar em "Sim"
 
 ## 👩‍💻 Autoria
 
