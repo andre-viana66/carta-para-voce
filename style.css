@@ -1,86 +1,136 @@
-.fundo{
-    background-image: url(imagens/fundo.jpg)  ;
-}
-  
+/* Fonte pixelada do Google Fonts (o @import precisa ser a PRIMEIRA linha do CSS) */
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
 
-.carta{
-    display: block;
-    margin: 0 auto;
-    cursor: pointer;
-    margin-top: 100px;
+/* ============================================================
+   BASE DA PÁGINA
+   ============================================================ */
+* {
+    box-sizing: border-box;   /* padding e borda não aumentam o tamanho dos elementos */
 }
 
+body {
+    margin: 0;  /* remove a margem padrão do navegador */
+    min-height: 100vh;          /* 100vh evita o "pulo" causado pela barra do navegador no celular */
+    min-height: 100dvh;       /* 100dvh evita o "pulo" causado pela barra do navegador no celular */
+    overflow-x: hidden;       /* impede rolagem lateral caso algo passe da tela */
 
+    background-color: #F6A6C8;            /* cor de reserva enquanto a imagem carrega */
+    background-image: url(imagens/fundo.png); 
+    background-repeat: no-repeat;          /* a imagem não se repete */
+    background-size: cover;               /* a imagem cobre a tela toda */
+    background-position: center;        /* a imagem fica centralizada */
+}
 
-.inicial_titulo{
+/* Imagens sem src (ainda não preenchidas pelo JS) ficam escondidas,
+   assim não aparece o ícone de "imagem quebrada" */
+img:not([src]) {
+    display: none;
+}
+
+/* ============================================================
+   JANELA (a caixa que se adapta à tela)
+   ============================================================ */
+.janela {
+    position: relative;                   /* os filhos "absolute" se posicionam em relação a ela */
+    width: min(300px, 70vw);              /* o MENOR entre 300px e 70% da tela: encolhe no celular */
+    margin: clamp(24px, 10vh, 80px) auto 0;  /* espaço no topo + centraliza na horizontal */
+    transition: width 0.3s ease;          /* anima o crescimento quando a carta abre */
+}
+
+/* Classe adicionada pelo JS depois do clique na carta */
+.janela.aberta {
+    width: min(600px, 92vw);              /* janela maior, mas nunca passa de 92% da tela */
+}
+
+.carta {
+    display: block;                         /* transforma a imagem em bloco, para poder centralizar */
+    width: 100%;                          /* ocupa toda a largura da janela */
+    height: auto;                         /* mantém a proporção da imagem */
+    cursor: pointer;                    
+}
+
+/* Depois de aberta, a imagem deixa de ser clicável */
+.janela.aberta .carta {
+    cursor: default;
+}
+
+/* ============================================================
+   TEXTOS
+   ============================================================ */
+.inicial_titulo {
     text-align: center;
-    font-family:  "Pixelify Sans", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-    color: #593B59;
+    font-family: "Pixelify Sans", sans-serif;
+    font-size: clamp(18px, 5vw, 32px);    /* mínimo 18px, máximo 32px, entre os dois acompanha a tela */
     font-weight: bold;
+    color: #593B59;
     text-shadow: 2px 2px 0px #F6A6C8;
-
+    padding: 0 16px;
 }
 
-.gatinho{
-    position: absolute;   
-    z-index: 2;
-    top: 250px;
-    width: 200px;
-    margin-left: 660px;
+.secundario_titulo {
+    position: absolute;
+    left: 50%;
+    top: 62%;                             /* posição vertical em % da janela */
+    width: 90%;                            /* largura em % da janela */
+    margin: 0;
+    transform: translateX(-50%);          /* centraliza horizontalmente */
+
+    text-align: center;
+    white-space: pre-line;                /* respeita as quebras de linha do texto */
+    font-family: "Pixelify Sans", sans-serif;
+    font-size: clamp(14px, 4.2vw, 28px);    /* mínimo 14px, máximo 28px, entre os dois acompanha a tela */
+    font-weight: bold;
+    color: #593B59;
+    text-shadow: 2px 2px 0px #F6A6C8;
 }
 
-.botao_sim{
-    position: absolute;   
+/* ============================================================
+   GATINHO
+   ============================================================ */
+.gatinho {
+    position: absolute;
+    z-index: 2;                           /* fica na frente da imagem de fundo */
+    left: 50%;                           /* posição horizontal em % da janela */ 
+    top: 28%;
+    width: 30%;                           /* 30% da largura da janela */
+    transform: translateX(-50%);          /* centraliza */
+}
+
+/* ============================================================
+   BOTÕES
+   ============================================================ */
+.botao_sim,
+.botao_nao {
+    position: absolute;
     z-index: 2;
-    top: 500px;
-    margin-left: 600px;
+    top: 76%;
+    width: 18%;                           /* tamanho em % da janela */
+    cursor: pointer;
+}
+
+.botao_sim {
+    left: 24%;
     transition: filter 0.2s ease;
-
 }
 
-.botao_sim:hover{
-    opacity: 0.9;
+.botao_nao {
+    left: 58%;
+    /* É ISSO que faz o botão DESLIZAR em vez de teleportar */
+    transition: left 0.4s ease, top 0.4s ease, filter 0.2s ease;
+}
+
+/* Efeito de brilho ao passar o mouse */
+.botao_sim:hover,
+.botao_nao:hover {
     filter: brightness(1.15);
 }
 
-.botao_nao{
-    position: fixed;   
-    z-index: 2;
-    top: 500px;
-    left: 800px;
-    transition: left 0.4s ease, top 0.4s ease;
-    margin: 0;    
+/* ============================================================
+   ACESSIBILIDADE: quem prefere menos movimento
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+    .janela,
+    .botao_nao {
+        transition: none;
+    }
 }
-
-.botao_nao:hover{
-    opacity: 0.9;
-    filter: brightness(1.15)
-}
-
-.secundario_titulo{
-    position: absolute;;
-    font-family:  "Pixelify Sans", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400px;
-    font-style: normal;
-    top: 58%;
-    color: #593B59;
-    left: 50%;
-    transform: translateX(-50%);
-    font-weight: bold;
-    text-shadow: 2px 2px 0px #F6A6C8;
-
-}
-
-
-.gatinho_feliz{
-    position: absolute;   
-    z-index: 2;
-    top: 250px;
-    width: 200px;
-    margin-left: 660px;
-}
-

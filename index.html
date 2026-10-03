@@ -2,38 +2,44 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+
+    <!-- OBRIGATÓRIO para ser responsivo: faz o celular usar a largura real da tela -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+
     <title>telinha - principal</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
-    </style>
+
+    <!-- Todo o visual (incluindo a fonte e o fundo) fica no style.css -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <style>
-        body{
-            background-image: url(imagens/fundo.png);
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-    </style>
     <main>
 
-        <img src="imagens/icon_carta.gif" width="300" class="carta" id="carta">
-        <img src=""  width="300" class="gatinho" id="gatinho">
-        <img src="" width="100" id="botao_sim" class="botao_sim">
+        <!--
+            "janela" é a caixa que encolhe e cresce conforme a tela.
+            Tudo que está dentro dela (gatinho, texto, botões) é posicionado
+            em PORCENTAGEM em relação a ela, por isso acompanha o tamanho.
+        -->
+        <div class="janela" id="janela">
 
+            <!-- Imagem principal: começa como o ícone da carta e vira a "janelinha" ao clicar -->
+            <img src="imagens/icon_carta.gif" class="carta" id="carta" alt="Carta fechada. Clique para abrir">
+
+            <!-- Sem atributo src: o JS preenche ao abrir a carta (o CSS esconde enquanto estiver vazio) -->
+            <img class="gatinho" id="gatinho" alt="Gatinho">
+
+            <!-- Texto da pergunta (preenchido pelo JS) -->
+            <h2 class="secundario_titulo" id="secundario_titulo"></h2>
+
+            <!-- Botões Sim e Não (as imagens são colocadas pelo JS) -->
+            <img class="botao_sim" id="botao_sim" alt="Sim">
+            <img class="botao_nao" id="botao_nao" alt="Não">
+        </div>
+
+        <!-- Título de boas-vindas, fora da janela para não interferir nas posições em % -->
         <h1 class="inicial_titulo" id="inicial_titulo">❤ Uma carta para você ❤</h1>
-        <h1 class="secundario_titulo" id="secundario_titulo"></h1>
 
-        <img src="" width="100" id="botao_nao" class="botao_nao">
-        <img src="" width="200" id="gatinho_feliz" class="gatinho_feliz">
-
-        
-        
     </main>
 
-    
     <script src="script.js"></script>
 </body>
 </html>
